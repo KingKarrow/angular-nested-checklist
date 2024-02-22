@@ -1,5 +1,49 @@
 # NestedChecklist
 
+## Background
+This project started when I was working on a side project in 3D character modeling. I wanted to set up a to-do list that required some hierarchy, and could run locally on my machine (it's my private list and I don't want to pay for a service). A nested checklist sounded perfect for keeping track of things. I started setting up an Angular project that I could just run locally, but after a bunch of searching discovered that a nested checklist was not a standard *thing* in Angular Material. So... I made my own!
+
+> [!NOTE]
+> This was made for my own purposes. I may eventually make this into an NPM package, but only if people want it. Make an issue if so!
+
+## Features
+- Nested checklist built for Angular, using Angular Material checkboxes and Reactive Forms.
+- Configure the contents of the nested checklist with a JSON file
+- Functioning nested checklist
+  - When an item is checked TRUE:
+    - All of its children (and childrens' children) will become True
+    - All parents above it will become True IF their children are all True
+  - When an item is checked FALSE:
+    - All of its children (and childrens' children) will become False
+    - All parents above it will become False, since at least one of their children is False
+
+## Configuration
+### [config.json](src/assets/config.json)
+``` json
+{
+    "checklist": INestedChecklistNode[]
+}
+```
+### [nested-checklist-node.ts](src/app/nested-checklist-node.ts)
+``` ts
+export interface INestedChecklistNode {
+    name: string,
+    checked: boolean,
+    index?: number,
+    children?: INestedChecklistNode[],
+    parent?: number
+}
+```
+### [app.component.html](src/app/app.component.html)
+``` html
+<nested-checklist [config]="config$"></nested-checklist>
+```
+
+## TODO
+- Tests!
+- More notes on implementation, how to adapt my code into your project etc
+- make the component into an NPM package so you can easily install as a module into an Angular project
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.5.
 
 ## Development server

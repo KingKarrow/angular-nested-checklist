@@ -1,0 +1,6 @@
+<form [formGroup]="form">
+    <!-- checklist builds here -->
+    <ul class="checklist">
+        <li class="checklist-item" *ngFor="let node of checklistData;" nested-checklist-node [node]="node" [formGroup]="form"></li>
+    </ul>
+</form>

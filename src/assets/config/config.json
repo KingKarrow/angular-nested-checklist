@@ -1,0 +1,176 @@
+{
+  "checklist": [
+    {
+      "name": "3D Modeling",
+      "checked": false,
+      "children": [
+        {
+          "name": "Body",
+          "checked": false,
+          "children": [
+            {
+              "name": "Head",
+              "checked": false,
+              "children": [
+                {
+                  "name": "Head shape",
+                  "checked": false
+                },
+                {
+                  "name": "Face",
+                  "checked": false,
+                  "children": [
+                    {
+                      "name": "Eyes",
+                      "checked": false,
+                      "children": [
+                        {
+                          "name": "Eye sockets",
+                          "checked": false
+                        },
+                        {
+                          "name": "Eyeballs",
+                          "checked": false
+                        },
+                        {
+                          "name": "Eyebrows",
+                          "checked": false
+                        },
+                        {
+                          "name": "Nasal bone",
+                          "checked": false
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Mouth",
+                      "checked": false,
+                      "children": [
+                        {
+                          "name": "Teeth",
+                          "checked": false
+                        },
+                        {
+                          "name": "Tongue",
+                          "checked": false
+                        },
+                        {
+                          "name": "Lips",
+                          "checked": false
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Nose",
+                      "checked": false
+                    },
+                    {
+                      "name": "Facial hair",
+                      "checked": false
+                    }
+                  ]
+                },
+                {
+                  "name": "Ears",
+                  "checked": false
+                }
+              ]
+            },
+            {
+              "name": "Torso",
+              "checked": false,
+              "children": [
+                {
+                  "name": "Chest",
+                  "checked": false
+                },
+                {
+                  "name": "Shoulders/shoulderblades",
+                  "checked": false
+                },
+                {
+                  "name": "Belly",
+                  "checked": false
+                },
+                {
+                  "name": "Back",
+                  "checked": false
+                }
+              ]
+            },
+            {
+              "name": "Arms",
+              "checked": false,
+              "children": [
+                {
+                  "name": "Hands",
+                  "checked": false
+                }
+              ]
+            },
+            {
+              "name": "Legs",
+              "checked": false,
+              "children": [
+                {
+                  "name": "Feet",
+                  "checked": false
+                }
+              ]
+            },
+            {
+              "name": "Hips",
+              "checked": false,
+              "children": [
+                {
+                  "name": "Butt",
+                  "checked": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Clothes",
+          "checked": false,
+          "children": [
+            {
+              "name": "Shirt",
+              "checked": false
+            },
+            {
+              "name": "Pants",
+              "checked": false
+            },
+            {
+              "name": "Shoes",
+              "checked": false,
+              "children": [
+                {
+                  "name": "Pair One",
+                  "checked": false
+                },
+                {
+                  "name": "Pair Two",
+                  "checked": false
+                },
+                {
+                  "name": "Pair Three",
+                  "checked": false
+                }
+              ]
+            },
+            {
+              "name": "Necklace",
+              "checked": false
+            },
+            {
+              "name": "Gloves",
+              "checked": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
