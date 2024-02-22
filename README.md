@@ -16,6 +16,7 @@ This project started when I was working on a side project in 3D character modeli
   - When an item is checked FALSE:
     - All of its children (and childrens' children) will become False
     - All parents above it will become False, since at least one of their children is False
+- Updates local storage item called "checklist" as you interact with the checklist
 
 ## Configuration
 ### [config.json](src/assets/config.json)
