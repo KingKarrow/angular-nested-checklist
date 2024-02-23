@@ -6,45 +6,59 @@ on:
   
 # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
 permissions:
+  contents: write
   pages: write      # to deploy to Pages
   id-token: write   # to verify the deployment originates from an appropriate source
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    - uses: actions/checkout@v3
+    - name: All things angular
+      uses: AhsanAyaz/angular-deploy-gh-pages-actions@[version] ## replace by latest version without it you will see Expected format {org}/{repo}[/path]@ref. Actual 'AhsanAyaz/angular-deploy-gh-pages-actions',Input string was not in a correct format.
+      with:
+        github_access_token: ${{ secrets.GITHUB_TOKEN }} # see the Configuration section for how you can create secrets
+        base_href: /angular-nested-checklist/   # make sure this corresponds to https://<your_username>.github.io/<base_href>/
+        deploy_branch: gh-pages # The branch the action should deploy to.
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '18'
 
-      # - name: Run tests
-      #   run: npm run test:headless
+  #     - name: Install dependencies
+  #       run: npm install
 
-      - name: Build
-        run: npm run build:prod
+  #     # - name: Run tests
+  #     #   run: npm run test:headless
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+  #     - name: Build
+  #       run: npm run build:prod
 
-  deploy:
-    needs: build
+  #     - name: Upload artifact
+  #       uses: actions/upload-pages-artifact@v3
 
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  # deploy:
+  #   needs: build
 
-    # Specify runner + deployment step
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
+  #   # Deploy to the github-pages environment
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+
+  #   # Specify runner + deployment step
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
   
