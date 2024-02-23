@@ -80,7 +80,8 @@ export class NestedChecklistComponent implements OnInit {
     this.updateParentsOf(node);
   }
 
-  onFormChange(formValues: Partial<{ items: boolean[] }>) {const items = formValues.items;
+  onFormChange(formValues: Partial<{ items: boolean[] }>) {
+    const items = formValues.items;
     if (items !== undefined) {
       const storeList = items.map(val => {
         return val ? 1 : 0;
