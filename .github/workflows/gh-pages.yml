@@ -2,34 +2,50 @@ name: GitHub Pages
 
 on:
   push:
-    branches:
-    - main
+    branches: [ main ]
+  
+# Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+permissions:
+  pages: write      # to deploy to Pages
+  id-token: write   # to verify the deployment originates from an appropriate source
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    # - name: Run tests
-    #   run: npm run test:headless
+      # - name: Run tests
+      #   run: npm run test:headless
 
-    - name: Build
-      run: npm run build:prod
+      - name: Build
+        run: npm run build:prod
 
-    - name: Deploy
-      if: success()
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: dist/nested-checklist
-        enable_jekyll: true
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+  deploy:
+    needs: build
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
+  
