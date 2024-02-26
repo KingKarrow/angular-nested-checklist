@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { INestedChecklistNode } from '../nested-checklist-node';
+import { INestedChecklistNode } from '../../models/nested-checklist-node';
 import { Observable } from 'rxjs';
 
 @Component({

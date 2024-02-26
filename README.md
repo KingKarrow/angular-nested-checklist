@@ -25,17 +25,18 @@ This project started when I was working on a side project in 3D character modeli
     "checklist": INestedChecklistNode[]
 }
 ```
-### [nested-checklist-node.ts](src/app/nested-checklist-node.ts)
+### [nested-checklist-node.ts](src/app/modules/nested-checklist/models/nested-checklist-node.ts)
 ``` ts
 export interface INestedChecklistNode {
     name: string,
     checked: boolean,
-    index?: number,
     children?: INestedChecklistNode[],
-    parent?: number
+    index?: number, // assigned automatically
+    parent?: number // assigned automatically
 }
 ```
 ### [app.component.html](src/app/app.component.html)
+`config$` is an `Observable<INestedChecklistNode[]>`
 ``` html
 <nested-checklist [config]="config$"></nested-checklist>
 ```

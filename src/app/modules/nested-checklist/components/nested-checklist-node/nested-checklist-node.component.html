@@ -1,4 +1,4 @@
-<mat-checkbox class="example-margin" [name]="'check-' + index" [formControl]="control">{{ node.name }}</mat-checkbox>
+<mat-checkbox class="example-margin" [name]="'check-' + index" [formControl]="control" [checked]="node.checked">{{ node.name }}</mat-checkbox>
 <ul *ngIf="node.children" class="checklist">
   <li nested-checklist-node class="checklist-item" *ngFor="let nodeChild of node.children;" [node]="nodeChild" [formGroup]="formGroup"></li>
 </ul>

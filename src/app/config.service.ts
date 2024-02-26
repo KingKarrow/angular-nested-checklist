@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, of } from 'rxjs';
-import { INestedChecklistNode } from './nested-checklist-node';
+import { INestedChecklistNode } from './modules/nested-checklist/models/nested-checklist-node';
 
 @Injectable({
   providedIn: 'root'

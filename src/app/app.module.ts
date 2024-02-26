@@ -1,34 +1,27 @@
-import { NgModule } from '@angular/core';
+import { importProvidersFrom, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatListModule } from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NestedChecklistComponent } from './nested-checklist/nested-checklist.component';
-import { NestedChecklistNodeComponent } from './nested-checklist-node/nested-checklist-node.component';
+import { MatNestedChecklistModule } from './modules/nested-checklist/mat-nested-checklist.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NestedChecklistComponent,
-    NestedChecklistNodeComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
     AppRoutingModule,
-    MatCheckboxModule,
     HttpClientModule,
-    MatListModule
+    MatNestedChecklistModule
   ],
   exports: [
 
   ],
-  providers: [],
+  providers: [
+    importProvidersFrom(HttpClientModule)
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

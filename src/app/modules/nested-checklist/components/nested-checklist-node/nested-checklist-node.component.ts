@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { INestedChecklistNode } from '../nested-checklist-node';
+import { INestedChecklistNode } from '../../models/nested-checklist-node';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 @Component({

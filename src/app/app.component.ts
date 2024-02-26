@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { INestedChecklistNode } from './nested-checklist-node';
+import { INestedChecklistNode } from './modules/nested-checklist/models/nested-checklist-node';
 import { ConfigService } from './config.service';
 
 @Component({
