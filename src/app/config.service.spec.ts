@@ -3,24 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
 import { ConfigService } from './config.service';
+import { mockConfig } from './mock';
+import { of } from 'rxjs';
 
 describe('ConfigService', () => {
   let service: ConfigService;
-  // let httpClient: HttpClient;
-  // let httpTestingController: HttpTestingController;
-
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
-    // TestBed.configureTestingModule({
-    //   imports: [ HttpClientTestingModule ]
-    // });
-
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get'])
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
+    httpClientSpy.get.and.returnValue(of(mockConfig));
     service = new ConfigService(httpClientSpy);
-    // httpClient = TestBed.inject(HttpClient);
-    // httpTestingController = TestBed.inject(HttpClient);
-    // service = TestBed.inject(ConfigService);
   });
 
   it('should be created', () => {

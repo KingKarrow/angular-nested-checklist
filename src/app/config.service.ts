@@ -11,7 +11,6 @@ export class ConfigService {
   constructor(private _http: HttpClient) { }
 
   getChecklistConfig(): Observable<INestedChecklistNode[]> {
-    // Replace with an HttpClient Get if you want to use an external file!
     return this._http.get<any>('./assets/config/config.json').pipe(
       map(data => this.getChecklistNodes(data))
     );

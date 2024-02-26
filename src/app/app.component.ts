@@ -9,7 +9,7 @@ import { ConfigService } from './config.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'nested-checklist';
+  title = 'angular-nested-checklist';
 
   config$: Observable<INestedChecklistNode[]>;
   
