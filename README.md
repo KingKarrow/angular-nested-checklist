@@ -6,6 +6,9 @@ This project started when I was working on a side project in 3D character modeli
 > [!NOTE]
 > This was made for my own purposes. I may eventually make this into an NPM package, but only if people want it. Make an issue if so!
 
+## Live demo
+Check out this app in [GitHub Pages](https://kingkarrow.github.io/angular-nested-checklist/)!
+
 ## Features
 - Nested checklist built for Angular, using Angular Material checkboxes and Reactive Forms.
 - Configure the contents of the nested checklist with a JSON file
