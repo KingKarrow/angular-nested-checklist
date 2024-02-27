@@ -1,7 +1,7 @@
 # NestedChecklist
 
 ## Background
-This project started when I was working on a side project in 3D character modeling. I wanted to set up a to-do list that required some hierarchy, and could run locally on my machine (it's my private list and I don't want to pay for a service). A nested checklist sounded perfect for keeping track of things. I started setting up an Angular project that I could just run locally, but after a bunch of searching discovered that a nested checklist was not a standard *thing* in Angular Material. So... I made my own!
+This project started when I was working on a side project in 3D character modeling. I wanted to set up a to-do list that required some hierarchy, and could run locally on my machine (it's my private list and I don't want to pay for a service). A nested checklist sounded perfect for keeping track of things. I started setting up an Angular project that I could just run locally. I found a [similar project](https://github.com/Maarti/AngularMaterialChecklist), which works nicely but does not support more than one level of nesting. So... I made my own!
 
 > [!NOTE]
 > This was made for my own purposes. I may eventually make this into an NPM package, but only if people want it. Make an issue if so!
