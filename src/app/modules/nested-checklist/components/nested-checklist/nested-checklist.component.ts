@@ -73,7 +73,7 @@ export class NestedChecklistComponent implements OnInit {
   }
 
   onControlChange(node: INestedChecklistNode, toValue: boolean) {
-    console.log('Control changed', node.name);
+    // console.log('Control changed', node.name);
     node.checked = toValue;
 
     this.updateChildrenOf(node);
