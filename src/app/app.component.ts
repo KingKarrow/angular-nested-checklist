@@ -12,6 +12,8 @@ export class AppComponent {
   title = 'angular-nested-checklist';
 
   config$: Observable<INestedChecklistNode[]>;
+
+  enableStorage: boolean = false;
   
   constructor(configService: ConfigService) {
     this.config$ = configService.getChecklistConfig();

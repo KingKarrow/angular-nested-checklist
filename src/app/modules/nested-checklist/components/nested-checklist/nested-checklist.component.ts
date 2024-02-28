@@ -10,20 +10,15 @@ import { Observable } from 'rxjs';
 })
 export class NestedChecklistComponent implements OnInit {
   @Input() config: Observable<INestedChecklistNode[]>;
+  @Input() enableStorage: boolean = false;
 
   form: FormGroup<{ items: FormArray<FormControl<boolean>> }>;
   checklistData: INestedChecklistNode[] = [];
   checklistFlat: INestedChecklistNode[] = [];
+
   storageList: boolean[] = [];
 
   constructor(private _formBuilder: FormBuilder) {
-    const localChecklist = localStorage.getItem('checklist');
-    if (localChecklist != null) {
-      this.storageList = localChecklist
-        .split(',')
-        .map(item => item === '1' ? true : false);
-    }
-
     this.form = this._formBuilder.group({
       items: new FormArray<FormControl<boolean>>([])
     });
@@ -31,9 +26,24 @@ export class NestedChecklistComponent implements OnInit {
 
   ngOnInit(): void {
     this.config.subscribe(ob => {
+      this.initStorage();
+      
       const newData: INestedChecklistNode[] = Array.isArray(ob) ? ob as INestedChecklistNode[] : [];
       this.populateChecklist(newData);
     });
+  }
+
+  private initStorage() {
+    if (this.enableStorage) {
+      const localChecklist = localStorage.getItem('checklist');
+      if (localChecklist != null) {
+        this.storageList = localChecklist
+          .split(',')
+          .map(item => item === '1' ? true : false);
+      }
+    } else {
+      localStorage.removeItem('checklist');
+    }
   }
 
   get formArray() {
@@ -56,9 +66,12 @@ export class NestedChecklistComponent implements OnInit {
 
   addCheckbox(node: INestedChecklistNode, parentIndex?: number) {
     node.index = this.formArray.length;
-    if (this.storageList[node.index] === undefined) this.storageList[node.index] = false;
-    node.checked = this.storageList[node.index];
     if (parentIndex !== undefined) node.parent = parentIndex;
+
+    if (this.enableStorage) {
+      if (this.storageList[node.index] === undefined) this.storageList[node.index] = false;
+      node.checked = this.storageList[node.index];
+    }
 
     const control = new FormControl(node.checked) as FormControl<boolean>;
     control.valueChanges.subscribe(val => this.onControlChange(node, val));
@@ -81,13 +94,15 @@ export class NestedChecklistComponent implements OnInit {
   }
 
   onFormChange(formValues: Partial<{ items: boolean[] }>) {
-    const items = formValues.items;
-    if (items !== undefined) {
-      const storeList = items.map(val => {
-        return val ? 1 : 0;
-      }).join(',');
-      localStorage.setItem('checklist', storeList);
-      this.storageList = items;
+    if (this.enableStorage) {
+      const items = formValues.items;
+      if (items !== undefined) {
+        const storeList = items.map(val => {
+          return val ? 1 : 0;
+        }).join(',');
+        localStorage.setItem('checklist', storeList);
+        this.storageList = items;
+      }
     }
   }
 
